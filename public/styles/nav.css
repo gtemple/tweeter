@@ -1,0 +1,13 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 120px;
+  padding: 1.5em;
+  background: #4056A1;
+  color: #FFFFFF
+}
+
+.titleLeft {
+  font-family: 'Bungee', cursive;
+}
