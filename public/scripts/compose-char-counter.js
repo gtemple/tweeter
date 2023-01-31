@@ -4,12 +4,13 @@ $( document ).ready(function() {
 
   $( '#tweet-text' ).keyup(function(){
     tweetLength = 140 - $(this).val().length; 
-    $('#tweet-counter').html(tweetLength);
+    $(this).next(".tweet-form-bottom").children('#tweet-counter').html(tweetLength);
 
-    tweetLength < 0 ? $('#tweet-counter').addClass('past-limit') : $('#tweet-counter').removeClass('past-limit')
+    tweetLength < 0 ?
+    $(this).next(".tweet-form-bottom").children("#tweet-counter").addClass("past-limit") :
+    $(this).next(".tweet-form-bottom").children("#tweet-counter").removeClass("past-limit")
   });
 });
-
 
 
 
