@@ -6,6 +6,9 @@
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+.past-limit {
+  color: red;
+}
 
 #tweet-text {
   background: none;
