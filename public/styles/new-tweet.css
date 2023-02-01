@@ -35,7 +35,7 @@
   font-family: 'Bungee', cursive;
 }
 
-.tweet-button {
+#tweet-button {
   background-color: #b23a48;
   border: none;
   color: rgb(238, 238, 238);

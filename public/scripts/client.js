@@ -32,6 +32,8 @@ const data = [
 ]
 
 const createTweetElement = (tweet) => {
+  const timeAgo = timeago.format(tweet.created_at)
+  //tweet.created_at
   newTweet =
   $(`<article class="tweet">
     <header>
@@ -48,7 +50,7 @@ const createTweetElement = (tweet) => {
     </p>
     <footer>
       <div>
-        ${tweet.created_at}
+        ${timeAgo}
       </div>
       <div>
         <i class="fa-solid fa-flag"></i>
@@ -64,13 +66,37 @@ const renderTweets = (data) => {
   data.forEach(user => {
     const $tweet = createTweetElement(user);
     $('#tweets-container').append($tweet);
+  });
+  return;
+}
+
+const loadTweets = () => {
+  $.get('/tweets', () => {
+    console.log('test')
+    renderTweets(data);
   })
-  return
+}
+
+const createTweet = (e) => {
+
+  const tweetContent = $('#tweet-post').serialize();
+  if (!tweetContent) {
+    alert("Your tweet form can't be empty")
+  }
+  $.post(tweetContent)
+  console.log(tweetContent)
+  e.preventDefault();
 }
 
 
-// Test / driver code (temporary)
+
 
 $(() => {
-  renderTweets(data)
+  loadTweets();
+
+  $('form').submit((e) => {
+    createTweet(e);
+  })
+
 })
+
