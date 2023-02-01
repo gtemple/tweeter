@@ -78,14 +78,20 @@ const loadTweets = () => {
 }
 
 const createTweet = (e) => {
-
-  const tweetContent = $('#tweet-post').serialize();
-  if (!tweetContent) {
-    alert("Your tweet form can't be empty")
-  }
-  $.post(tweetContent)
-  console.log(tweetContent)
   e.preventDefault();
+  const tweetContentValue = $('#tweet-post').val()
+  const tweetContentSerialized = $('#tweet-post').serialize();
+
+  if (!tweetContentValue) {
+    alert("Your tweet form can't be empty")
+    return
+  }
+  if (tweetContentValue.length > 140) {
+    alert("Your tweet has too many characters")
+    return
+  }
+  $.post(tweetContentSerialized)
+  console.log(tweetContentSerialized)
 }
 
 
