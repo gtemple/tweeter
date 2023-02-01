@@ -6,9 +6,16 @@
 
 // Test / driver code (temporary). Eventually will get this from the server.
 
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+
 const createTweetElement = (tweet) => {
   const timeAgo = timeago.format(tweet.created_at);
-  console.log(timeAgo)
+  const safeHTML = `<p class="tweet-text">${escape(tweet.content.text)}</p>`;
   //tweet.created_at
   newTweet = $(`<article class="tweet">
     <header>
@@ -20,9 +27,7 @@ const createTweetElement = (tweet) => {
         ${tweet.user.handle}
       </div>
     </header>
-    <p class="tweet-text">
-      ${tweet.content.text}
-    </p>
+     ${safeHTML}
     <footer>
       <div>
         ${timeAgo}
@@ -73,6 +78,6 @@ $(() => {
       loadTweets();
     });
     $("#tweet-counter").html(140);
-    $(".tweet-text").html("");
+    $(".tweet-text").text("");
   });
 });
