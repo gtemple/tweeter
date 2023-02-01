@@ -6,30 +6,6 @@
 
 
 // Test / driver code (temporary). Eventually will get this from the server.
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
 
 const createTweetElement = (tweet) => {
   const timeAgo = timeago.format(tweet.created_at)
@@ -63,35 +39,23 @@ const createTweetElement = (tweet) => {
 }
 
 const renderTweets = (data) => {
+  $('#tweets-container').empty();
   data.forEach(user => {
     const $tweet = createTweetElement(user);
-    $('#tweets-container').append($tweet);
+    console.log($tweet)
+    $('#tweets-container').prepend($tweet);
   });
   return;
 }
 
 const loadTweets = () => {
-  $.get('/tweets', () => {
-    console.log('test')
-    renderTweets(data);
-  })
-}
-
-const createTweet = (e) => {
-  e.preventDefault();
-  const tweetContentValue = $('#tweet-post').val()
-  const tweetContentSerialized = $('#tweet-post').serialize();
-
-  if (!tweetContentValue) {
-    alert("Your tweet form can't be empty")
-    return
-  }
-  if (tweetContentValue.length > 140) {
-    alert("Your tweet has too many characters")
-    return
-  }
-  $.post(tweetContentSerialized)
-  console.log(tweetContentSerialized)
+  const $tweets = $.get("/tweets")
+  //console.log($jsonObj.responseJSON)
+  $tweets
+    .then((tweetDataArr) => {
+      //console.log(tweetDataArr)
+      renderTweets(tweetDataArr)
+    });
 }
 
 
@@ -101,7 +65,22 @@ $(() => {
   loadTweets();
 
   $('form').submit((e) => {
-    createTweet(e);
+    e.preventDefault();
+    const tweetContentValue = $('#tweet-post').val()
+    const tweetContentSerialized = $('#tweet-post').serialize();
+  
+    if (!tweetContentValue) {
+      alert("Your tweet form can't be empty")
+      return
+    }
+    if (tweetContentValue.length > 140) {
+      alert("Your tweet has too many characters")
+      return
+    }
+    $.post("/tweets", tweetContentSerialized)
+    $("#tweet-counter").html(140)
+    $( '.tweet-text' ).html('')
+    loadTweets();
   })
 
 })
