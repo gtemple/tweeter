@@ -4,14 +4,13 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
 // Test / driver code (temporary). Eventually will get this from the server.
 
 const createTweetElement = (tweet) => {
-  const timeAgo = timeago.format(tweet.created_at)
+  const timeAgo = timeago.format(tweet.created_at);
+  console.log(timeAgo)
   //tweet.created_at
-  newTweet =
-  $(`<article class="tweet">
+  newTweet = $(`<article class="tweet">
     <header>
       <div>
         <i class="fa-solid fa-user"></i>
@@ -34,51 +33,46 @@ const createTweetElement = (tweet) => {
         <i class="fa-solid fa-heart"></i>
       </div>
     </footer>
-  </article>`)
+  </article>`);
   return newTweet;
-}
+};
 
 const renderTweets = (data) => {
-  $('#tweets-container').empty();
-  data.forEach(user => {
+  $("#tweets-container").empty();
+  data.forEach((user) => {
     const $tweet = createTweetElement(user);
-    $('#tweets-container').prepend($tweet);
+    $("#tweets-container").prepend($tweet);
   });
   return;
-}
+};
 
 const loadTweets = () => {
-  const $tweets = $.get("/tweets")
-  $tweets
-    .then((allTweets) => {
-      renderTweets(allTweets)
-    });
-}
+  const $tweets = $.get("/tweets/", (allTweets) => {
+    renderTweets(allTweets);
+  });
 
-
-
+};
 
 $(() => {
   loadTweets();
 
-  $('form').submit((e) => {
+  $("form").submit((e) => {
     e.preventDefault();
-    const tweetContentValue = $('#tweet-post').val()
-    const tweetContentSerialized = $('#tweet-post').serialize();
-  
+    const tweetContentValue = $("#tweet-post").val();
+    const tweetContentSerialized = $("#tweet-post").serialize();
+
     if (!tweetContentValue) {
-      alert("Your tweet form can't be empty")
-      return
+      alert("Your tweet form can't be empty");
+      return;
     }
     if (tweetContentValue.length > 140) {
-      alert("Your tweet has too many characters")
-      return
+      alert("Your tweet has too many characters");
+      return;
     }
-    $.post("/tweets", tweetContentSerialized)
-    $("#tweet-counter").html(140)
-    $( '.tweet-text' ).html('')
-    loadTweets();
-  })
-
-})
-
+    $.post("/tweets", tweetContentSerialized, () => {
+      loadTweets();
+    });
+    $("#tweet-counter").html(140);
+    $(".tweet-text").html("");
+  });
+});
