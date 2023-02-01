@@ -42,7 +42,6 @@ const renderTweets = (data) => {
   $('#tweets-container').empty();
   data.forEach(user => {
     const $tweet = createTweetElement(user);
-    console.log($tweet)
     $('#tweets-container').prepend($tweet);
   });
   return;
@@ -50,11 +49,9 @@ const renderTweets = (data) => {
 
 const loadTweets = () => {
   const $tweets = $.get("/tweets")
-  //console.log($jsonObj.responseJSON)
   $tweets
-    .then((tweetDataArr) => {
-      //console.log(tweetDataArr)
-      renderTweets(tweetDataArr)
+    .then((allTweets) => {
+      renderTweets(allTweets)
     });
 }
 
