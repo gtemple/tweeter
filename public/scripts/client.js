@@ -55,23 +55,34 @@ const loadTweets = () => {
   const $tweets = $.get("/tweets/", (allTweets) => {
     renderTweets(allTweets);
   });
-
 };
 
+const hideErrorMessages = () => {
+  $(".error-message").hide(() => {});
+}
+
+const showMessage = (id) => {
+  $(id).slideDown( "slow", () => {});
+}
+
+
 $(() => {
+  hideErrorMessages();
   loadTweets();
+  showMessage();
 
   $("form").submit((e) => {
     e.preventDefault();
     const tweetContentValue = $("#tweet-post").val();
     const tweetContentSerialized = $("#tweet-post").serialize();
 
+    hideErrorMessages();
     if (!tweetContentValue) {
-      alert("Your tweet form can't be empty");
+      showMessage('#empty-field')
       return;
     }
     if (tweetContentValue.length > 140) {
-      alert("Your tweet has too many characters");
+      showMessage('#field-too-long')
       return;
     }
     $.post("/tweets", tweetContentSerialized, () => {

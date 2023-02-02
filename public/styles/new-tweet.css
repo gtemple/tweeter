@@ -38,5 +38,19 @@
 #tweet-button {
   background-color: #b23a48;
   border: none;
-  color: rgb(238, 238, 238);
+  color: white;
 }
+
+.error-message {
+  text-align: center;
+  color: red;
+  border: solid red;
+  border-radius: 10px;
+  border-width: 3px;
+  font-size: 20px;
+  padding: 2px;
+  font-weight: bold;
+  margin: 5px;
+  display: none;
+}
+

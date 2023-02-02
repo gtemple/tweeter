@@ -58,6 +58,12 @@
     <main class="container">
       <section class="tweet">
         <h2>Compose Tweet</h2>
+        <div class="error-message" id="empty-field">
+          <i class="fa-solid fa-triangle-exclamation"></i> The tweet field is empty. Please type something to share. <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <div class="error-message" id="field-too-long">
+          <i class="fa-solid fa-triangle-exclamation"></i> Your tweet is too many characters! <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
         <form class="tweet" id="#tweet-form" action="/tweets" method="POST">
           <label for="tweet-text"></label>
             <textarea name="text"
