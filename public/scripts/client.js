@@ -17,11 +17,11 @@ const createTweetElement = (tweet) => {
   const timeAgo = timeago.format(tweet.created_at);
   const safeHTML = `<p class="tweet-text">${escape(tweet.content.text)}</p>`;
   //tweet.created_at
-  newTweet = $(`<article class="tweet">
+  const newTweet = $(`<article class="tweet">
     <header>
       <div>
-        <i class="fa-solid fa-user"></i>
-        ${tweet.user.name}
+        <img src="${tweet.user.avatars}">
+        <span>&nbsp;&nbsp;${tweet.user.name}</span>
       </div>
       <div>
         ${tweet.user.handle}
@@ -59,11 +59,11 @@ const loadTweets = () => {
 
 const hideErrorMessages = () => {
   $(".error-message").hide(() => {});
-}
+};
 
 const showMessage = (id) => {
-  $(id).slideDown( "fast", () => {});
-}
+  $(id).slideDown("fast", () => {});
+};
 
 
 $(() => {
@@ -78,11 +78,11 @@ $(() => {
 
     hideErrorMessages();
     if (!tweetContentValue) {
-      showMessage('#empty-field')
+      showMessage('#empty-field');
       return;
     }
     if (tweetContentValue.length > 140) {
-      showMessage('#field-too-long')
+      showMessage('#field-too-long');
       return;
     }
     $.post("/tweets", tweetContentSerialized, () => {
