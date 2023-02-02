@@ -24,6 +24,19 @@ nav {
 
 .fa-angles-down {
   color: #0075F2;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+.bounce-1 {
+  animation-name: bounce-1;
+  animation-timing-function: linear;
+  animation-timing-function: ease;
+}
+@keyframes bounce-1 {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(10px); }
+  100% { transform: translateY(0); }
 }
 
 
