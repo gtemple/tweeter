@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #FAF3DD;
   width: 100%;
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -42,6 +41,11 @@
   color: white;
 }
 
+#tweet-button:hover {
+  border: solid 5px #0075F2;;
+  border-radius: 10px;
+}
+
 .error-message {
   text-align: center;
   color: red;
@@ -54,4 +58,3 @@
   margin: 5px;
   display: none;
 }
-

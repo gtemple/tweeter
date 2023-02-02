@@ -14,3 +14,13 @@ header {
   font-weight: normal;
   color: white;
 }
+
+@media screen and (min-width: 1024px) {
+  header {
+    width: 33%;
+    margin: 170px 50px 0px 50px;
+    padding: 20px 50px 0px 50px;
+    height: 20%;
+    font-size: 90%;
+  }
+}

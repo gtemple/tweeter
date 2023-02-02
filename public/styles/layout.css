@@ -33,3 +33,13 @@ body {
   align-items: center;
   color: #30323D;
 }
+
+@media screen and (min-width: 1024px) {
+  body {
+    display:flex;
+  }
+  main {
+    width: 60%;
+    padding: 170px 40px 0px 100px
+  }
+}

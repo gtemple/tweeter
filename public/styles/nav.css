@@ -25,3 +25,11 @@ nav {
 .fa-angles-down {
   color: #0075F2;
 }
+
+
+@media screen and (min-width: 1024px) {
+  nav {
+    background: #30323D;
+    background-image: none;
+  }
+}

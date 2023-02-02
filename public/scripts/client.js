@@ -62,7 +62,7 @@ const hideErrorMessages = () => {
 }
 
 const showMessage = (id) => {
-  $(id).slideDown( "slow", () => {});
+  $(id).slideDown( "fast", () => {});
 }
 
 
@@ -88,7 +88,7 @@ $(() => {
     $.post("/tweets", tweetContentSerialized, () => {
       loadTweets();
     });
+    $("#tweet-post").val('');
     $("#tweet-counter").html(140);
-    $(".tweet-text").text("");
   });
 });

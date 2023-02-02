@@ -32,3 +32,11 @@ article.tweet:hover {
 .fa-solid:hover {
   color: #ff9b59;
 }
+@media screen and (min-width: 1024px) {
+  .tweet header {
+    width: 100%;
+    margin: 0;
+    padding: 10px 0px 30px 0px;
+  }
+}
+
