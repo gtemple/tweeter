@@ -6,7 +6,8 @@ nav {
   height: 120px;
   padding: 1.5em;
   background: #b23a48;
-  color: #FFFFFF
+  color: #FFFFFF;
+  background-image: url("/images/background-main.png")
 }
 
 .title-left {

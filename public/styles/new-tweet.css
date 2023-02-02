@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: #FAF3DD;
   width: 100%;
   font-family: 'Source Sans Pro', sans-serif;
 }

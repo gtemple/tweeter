@@ -2,13 +2,15 @@ header {
   display: flex;
   flex-direction: column;
   padding-top: 120px;
-  height: 400px;
+  height: 466px;
   width: 100%;
   align-items: center;
+  background-color:  #b23a48;
+  background-image: url("/images/background-main.png")
 }
 
 .username {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: normal;
-  color: #30323D
+  color: white;
 }

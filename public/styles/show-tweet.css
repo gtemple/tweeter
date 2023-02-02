@@ -12,7 +12,9 @@ article.tweet {
   flex-direction: row;
   height: 0px;
   padding-top: 10px;
-  padding-bottom: 30px
+  padding-bottom: 30px;
+  background-color: #FAF3DD;
+  background-image: none;
 }
 
 .tweet footer{
