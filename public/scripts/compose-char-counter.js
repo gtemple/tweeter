@@ -1,3 +1,4 @@
+//Counts the characters of the tweets input field and updates the character count in real time
 $(document).ready(function () {
   console.log("ready!");
   let tweetLength;

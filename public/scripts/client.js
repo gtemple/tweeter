@@ -12,11 +12,10 @@ const escape = function (str) {
   return div.innerHTML;
 };
 
-
+// Will convert a tweet object to html so that it can be placed on the site
 const createTweetElement = (tweet) => {
   const timeAgo = timeago.format(tweet.created_at);
   const safeHTML = `<p class="tweet-text">${escape(tweet.content.text)}</p>`;
-  //tweet.created_at
   const newTweet = $(`<article class="tweet">
     <header>
       <div>
@@ -42,6 +41,7 @@ const createTweetElement = (tweet) => {
   return newTweet;
 };
 
+//renders all tweets onto the tweeter page by prepending them to the main container
 const renderTweets = (data) => {
   $("#tweets-container").empty();
   data.forEach((user) => {
@@ -57,6 +57,7 @@ const loadTweets = () => {
   });
 };
 
+//handles input errors when attempting to post a tweet
 const hideErrorMessages = () => {
   $(".error-message").hide(() => {});
 };
@@ -65,11 +66,21 @@ const showMessage = (id) => {
   $(id).slideDown("fast", () => {});
 };
 
+const focusOnTextfield = () => {
+  $("form").hide()
+  $( ".fa-angles-down" ).click(() => {
+    console.log('hi')
+    $( "form" ).toggle();
+    $( "textarea" ).focus();
+  });
+}
 
+//runs all above code when required with jquery while also handling post requests
 $(() => {
   hideErrorMessages();
   loadTweets();
   showMessage();
+  focusOnTextfield();
 
   $("form").submit((e) => {
     e.preventDefault();
