@@ -66,11 +66,12 @@ const showMessage = (id) => {
   $(id).slideDown("fast", () => {});
 };
 
+//toggles and focuses the tweet input field
 const focusOnTextfield = () => {
   $("form").hide()
   $( ".fa-angles-down" ).click(() => {
     console.log('hi')
-    $( "form" ).toggle();
+    $( "form" ).slideToggle();
     $( "textarea" ).focus();
   });
 }

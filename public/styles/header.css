@@ -22,5 +22,6 @@ header {
     padding: 20px 50px 0px 50px;
     height: 20%;
     font-size: 90%;
+    border-radius: 20px;
   }
 }
